@@ -6,6 +6,8 @@ import os
 pub struct HelpMan implements ISubTool {
 mut:
 	core &Core
+
+	calls int
 }
 
 pub fn HelpMan.new(core &Core) &HelpMan { return &HelpMan{ core: core } }
@@ -62,7 +64,9 @@ pub fn (mut this HelpMan) execute(args []string) ! {
 		return
 	}
 
+	this.calls++
 	tool_name := args[0]
 	tool := this.core.find_tool_by_name(tool_name)!
 	println(tool.tool.get_help_string())
+	return
 }
