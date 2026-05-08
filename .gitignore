@@ -22,6 +22,7 @@ bin/
 # vweb and database
 *.db
 *.js
+.build/
 
 # Ignore installed modules through `v install --local`:
 modules/

@@ -1,5 +1,13 @@
 module main
 
+import core
+import structurer
+
 fn main() {
-	println('Hello World!')
+	mut core_app := core.Core.new()
+
+	core_app.register(core.HelpMan.new(core_app))
+	core_app.register(structurer.Structurer.new(core_app))
+
+	core_app.execute(arguments())!
 }
