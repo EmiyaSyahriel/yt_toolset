@@ -8,7 +8,10 @@ pub mut:
 }
 
 pub fn ISubToolWrap.wrap(name string, inner &ISubTool) &ISubToolWrap {
-	return &ISubToolWrap { name: name, tool: inner }
+	return &ISubToolWrap{
+		name: name
+		tool: inner
+	}
 }
 
 @[heap]
@@ -18,7 +21,7 @@ pub mut:
 }
 
 pub fn Core.new() &Core {
-	mut core := &Core {
+	mut core := &Core{
 		subtools: []
 	}
 
@@ -31,28 +34,29 @@ pub fn (mut this Core) register(ins &ISubTool) {
 
 pub fn (this &Core) find_tool_by_name(name string) !&ISubToolWrap {
 	for st in this.subtools {
-		if st.name != name { continue }
+		if st.name != name { continue
+		 }
 		return st
 	}
 
-	return error("unknown tool: ${name}")
+	return error('unknown tool: ${name}')
 }
 
 pub fn (this &Core) find_tool_by_type[T]() !&ISubToolWrap {
 	for _, tool in this.subtools {
-		if tool.tool !is &T { continue }
+		if tool.tool !is &T { continue
+		 }
 		return tool
 	}
-	return error("unknown requested type")
+	return error('unknown requested type')
 }
 
-pub fn (mut this Core) execute(args []string)! {
-
+pub fn (mut this Core) execute(args []string) ! {
 	usable_arg := args[1..]
 
-	contains_help := args.contains("--help") || args.contains("-h")
+	contains_help := args.contains('--help') || args.contains('-h')
 	if usable_arg.len == 0 || contains_help {
-		mut t := this.find_tool_by_name("help")!
+		mut t := this.find_tool_by_name('help')!
 		t.tool.execute([])!
 		return
 	}

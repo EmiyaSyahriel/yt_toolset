@@ -7,5 +7,5 @@ pub interface ISubTool {
 mut:
 	core &Core
 	// this would send just the environment
-	execute(args []string)!
+	execute(args []string) !
 }
