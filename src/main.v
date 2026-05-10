@@ -1,9 +1,9 @@
-module main
+module src
 
 import core
 import structurer
 
-fn main() {
+pub fn main()! {
 	mut core_app := core.Core.new()
 
 	core_app.register(core.HelpMan.new(core_app))
