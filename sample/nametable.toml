@@ -1,0 +1,19 @@
+# Default config
+
+[cfg.name_default.ja]
+format = "${family} ${given}"
+call_by = "${family}"
+use_pronoun = false
+pronoun= "さん"
+
+[cfg.name_default.id]
+format = "${family} ${given}"
+call_by = "${given}"
+use_pronoun = false
+pronoun= "-san"
+
+[cfg.name_default.en]
+format =  "${given} ${family}"
+call_by = "${given}"
+use_pronoun = false
+pronoun= "-san"
