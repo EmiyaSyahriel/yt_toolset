@@ -1,22 +1,22 @@
 module ass
 
 pub enum BorderStyle {
-	outline = 1
+	outline    = 1
 	opaque_box = 3
 }
 
 pub enum AlignmentStyle {
-	top_left = 7
+	top_left   = 7
 	top_center = 8
-	top_right = 9
+	top_right  = 9
 
-	center_left = 4
+	center_left   = 4
 	center_center = 5
-	center_right = 6
+	center_right  = 6
 
-	bottom_left = 1
+	bottom_left   = 1
 	bottom_center = 2
-	bottom_right = 3
+	bottom_right  = 3
 }
 
 //
@@ -51,13 +51,13 @@ pub enum EncodingCode {
 	// Greek, yes
 	greek = 0xA1
 
-	// Tukiye, yep
+	// Türkiye, yep
 	turkish = 0xA2
 
 	// Vietnam, for the same reason
 	vietnamese = 0xA3
 
-	// Hebrew, no comment or I would get anti-semitic false accusation
+	// Hebrew, yes
 	hebrew = 0xB1
 
 	// Arabic, na'am
@@ -81,27 +81,27 @@ pub enum EncodingCode {
 
 pub struct Style {
 pub mut:
-	name string
-	font_name string
-	font_size u32
-	primary_color Color
+	name            string
+	font_name       string
+	font_size       u32
+	primary_color   Color
 	secondary_color Color
-	outline_color Color
-	back_color Color
-	bold bool
-	italic bool
-	underline bool
-	strike_out bool
-	scale_x f32
-	scale_y f32
-	spacing u32
-	angle f32
-	border_style BorderStyle
-	outline u32
-	shadow u32
-	alignment AlignmentStyle
-	margin_l u32
-	margin_r u32
-	margin_v u32
-	encoding EncodingCode
+	outline_color   Color
+	back_color      Color
+	bold            bool
+	italic          bool
+	underline       bool
+	strike_out      bool
+	scale_x         f32
+	scale_y         f32
+	spacing         u32
+	angle           f32
+	border_style    BorderStyle
+	outline         u32
+	shadow          u32
+	alignment       AlignmentStyle
+	margin_l        u32
+	margin_r        u32
+	margin_v        u32
+	encoding        EncodingCode
 }
