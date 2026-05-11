@@ -97,9 +97,43 @@ fn run_main(_ build.Task) ! {
     exit(0)
 }
 
+fn do_test(_ build.Task) !{
+    execsh("v", getwd(), ["-stats", "test", "."], {})!
+    return
+}
+
+fn do_check(_ build.Task)! {
+    mut f_args := ["."]
+
+    if is_transpiles {
+        f_args << ["-o", "${bin_path}.c"]
+    } else {
+        f_args << ["-o", bin_path]
+    }
+
+    if is_prod {
+        f_args << "-prod"
+
+        if is_tryhard {
+            f_args << ["-fast-math"]
+            f_args << ["-d", "no_segfault_handler"]
+            f_args << ["-cflags", "-march=native"]
+        }
+    } else {
+        f_args << "-g"
+    }
+
+    f_args << "-check"
+
+    execsh("v", getwd(), f_args, {})!
+    return
+}
+
 mut ctx := build.context(default: "build")
 
 ctx.task(name: 'build', run: build_main, should_run: should_rebuild_main)
 ctx.task(name: 'run', run: run_main, depends: [ 'build' ])
+ctx.task(name: 'test', run: do_test)
+ctx.task(name: 'check', run: do_check)
 
 ctx.run()
