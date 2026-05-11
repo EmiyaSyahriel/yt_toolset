@@ -1,0 +1,27 @@
+## ========== Million Live ver of 961 ==========
+
+# Shiika
+[chara.shiika.ja]
+given = "詩花"
+family = ""
+tags = ["${given}"]
+format = "${given}"
+
+[chara.shiika.ww]
+family = ""
+given = "Shiika"
+tags = ["${given}"]
+format = "${given}"
+
+# Leon
+[chara.reon.ja]
+given = "玲音"
+family = ""
+tags = ["${given}"]
+format = "${given}"
+
+[chara.reon.ww]
+family = ""
+given = "Leon"
+tags = ["${given}"]
+format = "${given}"

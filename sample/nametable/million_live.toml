@@ -1,4 +1,6 @@
-## Mirai Kasuga
+## ========== First 13 ==========
+
+# Mirai Kasuga
 [chara.mirai.ja]
 family = "春日"
 given = "未来"
@@ -7,7 +9,7 @@ given = "未来"
 family = "Kasuga"
 given = "Mirai"
 
-## Shizuka Mogami
+# Shizuka Mogami
 [chara.shizuka.ja]
 family = "最上"
 given = "静香"
@@ -16,11 +18,378 @@ given = "静香"
 family = "Mogami"
 given = "Shizuka"
 
-## Tsubasa Ibuki
+# Tsubasa Ibuki
 [chara.tsubasa.ja]
-family = "息吹"
+family = "伊吹"
 given = "翼"
 
 [chara.tsubasa.ww]
 family = "Ibuki"
 given = "Tsubasa"
+
+# Kotoha Tanaka
+[chara.kotoha.ja]
+family = "田中"
+given = "琴葉"
+
+[chara.kotoha.ww]
+given = "Kotoha"
+family = "Tanaka"
+
+# Elena Shimabara
+[chara.elena.ja]
+family = "島原"
+given = "エレナ"
+
+[chara.elena.ww]
+given = "Elena"
+family = "Shimabara"
+
+# Minako Satake
+[chara.minako.ja]
+family = "佐竹"
+given = "美奈子"
+
+[chara.minako.ww]
+given = "Minako"
+family = "Satake"
+
+# Megumi Tokoro
+[chara.megumi.ja]
+family = "所"
+given = "恵美"
+
+[chara.megumi.ww]
+given = "Megumi"
+family = "Tokoro"
+
+# Matsuri Tokugawa
+[chara.matsuri.ja]
+family = "徳川"
+given = "まつり"
+
+[chara.matsuri.ww]
+given = "Matsuri"
+family = "Tokugawa"
+
+# Serika Hakozaki
+[chara.serika.ja]
+family = "箱崎"
+given = "梨花"
+
+[chara.serika.ww]
+given = "Serika"
+family = "Hakozaki"
+
+# Akane Nonohara
+[chara.akane.ja]
+family = "野々原"
+given = "茜"
+
+[chara.akane.ww]
+given = "Akane"
+family = "Nonohara"
+
+# Anna Mochizuki
+[chara.anna.ja]
+family = "望月"
+given = "杏奈"
+
+[chara.anna.ww]
+given = "Anna"
+family = "Mochizuki"
+
+# Roco Handa
+[chara.roco.ja]
+family = "伴田"
+given = "路子"
+given_alt = "ロコ"
+tags = [ "${given_alt}", "${given}${family}" ]
+format = "${given_alt}"
+
+[chara.roco.ww]
+given = "Roko"
+family = "Handa"
+given_alt = "Roco"
+
+# Yuriko Nanao
+[chara.yuriko.ja]
+family = "七尾"
+given = "百合子"
+
+[chara.yuriko.ww]
+given = "Yuriko"
+family = "Nanao"
+
+## ========== Second 13 ==========
+
+# Sayoko Takayama
+[chara.sayoko.ja]
+family = "高山"
+given = "紗代子"
+
+[chara.sayoko.ww]
+given = "Sayoko"
+family = "Takayama"
+
+# Arisa Matsuda
+[chara.arisa.ja]
+family = "松田"
+given = "亜利沙"
+
+[chara.arisa.ww]
+given = "Arisa"
+family = "Matsuda"
+
+# Umi Kousaka
+[chara.umi.ja]
+family = "高坂"
+given = "海美"
+
+[chara.umi.ww]
+given = "Umi"
+family = "Kousaka"
+
+# Iku Nakatani
+[chara.iku.ja]
+family = "中谷"
+given = "育"
+
+[chara.iku.ww]
+given = "Iku"
+family = "Nakatani"
+
+# Tomoka Tenkubashi
+[chara.tomoka.ja]
+family = "天空橋"
+given = "朋花"
+
+[chara.tomoka.ww]
+given = "Tomoka"
+family = "Tenkubashi"
+
+# Emily Stewart
+[chara.emily.ja]
+family = "スチュアート"
+given = "エミリー"
+format = "${given} ${family}"
+tags = [ "${given}", "${given}${family}" ]
+
+[chara.emily.ww]
+given = "Emily"
+family = "Stewart"
+
+# Shiho Kitazawa
+[chara.shiho.ja]
+family = "北沢"
+given = "志保"
+
+[chara.shiho.ww]
+given = "Shiho"
+family = "Kitazawa"
+
+# Ayumu Maihama
+[chara.ayumu.ja]
+family = "舞浜"
+given = "歩"
+
+[chara.ayumu.ww]
+given = "Ayumu"
+family = "Maihama"
+
+# Hinata Kinoshita
+[chara.hinata.ja]
+family = "木下"
+given = "ひなた"
+
+[chara.hinata.ww]
+given = "Hinata"
+family = "Kinoshita"
+
+# Kana Yabuki
+[chara.kana.ja]
+family = "矢吹"
+given = "可奈"
+
+[chara.kana.ww]
+given = "Kana"
+family = "Yabuki"
+
+# Nao Yokoyama
+[chara.nao.ja]
+family = "横山"
+given = "奈緒"
+
+[chara.nao.ww]
+given = "Nao"
+family = "Yokoyama"
+
+# Chizuru Nikaido
+[chara.chizuru.ja]
+family = "二階堂"
+given = "千鶴"
+
+[chara.chizuru.ww]
+given = "Chizuru"
+family = "Nikaido"
+
+# Konomi Baba
+[chara.konomi.ja]
+family = "馬場"
+given = "このみ"
+
+[chara.konomi.ww]
+given = "Konomi"
+family = "Baba"
+
+## ========== Third 13 ==========
+
+# Tamaki Oogami
+[chara.tamaki.ja]
+family = "大神"
+given = "環"
+
+[chara.tamaki.ww]
+given = "Tamaki"
+family = "Oogami"
+
+# Fuuka Toyokawa
+[chara.fuuka.ja]
+family = "豊川"
+given = "風花"
+
+[chara.fuuka.ww]
+given = "Fuuka"
+family = "Toyokawa"
+
+# Miya Miyao
+[chara.miya.ja]
+family = "宮尾"
+given = "美也"
+
+[chara.miya.ww]
+given = "Miya"
+family = "Miyao"
+
+# Noriko Fukuda
+[chara.noriko.ja]
+family = "福田"
+given = "のり子"
+
+[chara.noriko.ww]
+given = "Noriko"
+family = "Fukuda"
+
+# Mizuki Makabe
+[chara.mizuki.ja]
+family = "真壁"
+given = "瑞希"
+
+[chara.mizuki.ww]
+given = "Mizuki"
+family = "Makabe"
+
+# Karen Shinomiya
+[chara.karen.ja]
+family = "篠宮"
+given = "可憐"
+
+[chara.karen.ww]
+given = "Karen"
+family = "Shinomiya"
+
+# Rio Momose
+[chara.rio.ja]
+family = "百瀬"
+given = "莉緒"
+
+[chara.rio.ww]
+given = "Rio"
+family = "Momose"
+
+# Subaru Nagayoshi
+[chara.subaru.ja]
+family = "永吉"
+given = "昴"
+
+[chara.subaru.ww]
+given = "Subaru"
+family = "Nagayoshi"
+
+# Reika Kitakami
+[chara.reika.ja]
+family = "北上"
+given = "麗花"
+
+[chara.reika.ww]
+given = "Reika"
+family = "Kitakami"
+
+# Momoko Suou
+[chara.momoko.ja]
+family = "周防"
+given = "桃子"
+
+[chara.momoko.ww]
+given = "Momoko"
+family = "Suou"
+
+# Julia
+[chara.julia.ja]
+family = "ジュリア"
+given = ""
+tags = ["${given}"]
+format = "${given}"
+
+[chara.julia.ww]
+given = "Julia"
+family = ""
+tags = ["${given}"]
+format = "${given}"
+
+# Tsumugi Shiraishi
+[chara.tsumugi.ja]
+family = "白石"
+given = "紬"
+
+[chara.tsumugi.ww]
+given = "Tsumugi"
+family = "Shiraishi"
+
+# Kaori Sakuramori
+[chara.kaori.ja]
+family = "桜守"
+given = "歌織"
+
+[chara.kaori.ww]
+given = "Kaori"
+family = "Sakuramori"
+
+## ========== Staffs ==========
+
+# Kotori Otonashi
+[chara.kotori.ja]
+family = "音無"
+given = "小鳥"
+
+[chara.kotori.ww]
+given = "Kotori"
+family = "Otonashi"
+
+# Misaki Aoba
+[chara.misaki.ja]
+family = "青羽"
+given = "美咲"
+
+[chara.misaki.ww]
+given = "Misaki"
+family = "Aoba"
+
+# Junjiro Takagi
+[chara.junjiro.ja]
+family = "高木"
+given = "順二朗"
+
+[chara.junjiro.ww]
+given = "Junjiro"
+family = "Takagi"
