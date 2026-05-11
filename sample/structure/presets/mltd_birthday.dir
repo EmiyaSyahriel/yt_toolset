@@ -3,15 +3,15 @@ D Source
 D Source/Stable
 D Source/Original
 D Project
-F Project/$(ProjectName).kdenlive :: Main.kdenlive
-F Project/$(ProjectName)_Shorts.kdenlive :: Shorts.kdenlive
-F Project/$(ProjectName).ass :: Main.ass
-F Project/$(ProjectName)_Shorts.ass :: Shorts.ass
+F Project/$(project.name).kdenlive :: Main.kdenlive
+F Project/$(project.name)_Shorts.kdenlive :: Shorts.kdenlive
+F Project/$(project.name).ass :: Main.ass
+F Project/$(project.name)_Shorts.ass :: Shorts.ass
 D Render
 D Thumb
 
-A Project.RenderDir = Render/
-A Project.ThumbDir = Thumb/
-A Project.SrcDirStable = Source/Stable/
-A Project.SrcDirOriginal = Source/Original/
-A Project.ProjectDir = Project/
+A project.render_dir = Render/
+A project.thumb_dir = Thumb/
+A project.source_dir_stable = Source/Stable/
+A project.source_dir_record = Source/Original/
+A project.project_dir = Project/
