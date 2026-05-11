@@ -1,0 +1,12 @@
+template = "mltd_birthday"
+
+[char]
+who = ""
+
+[comment]
+ja = ""
+en = ""
+id = ""
+
+[chapters]
+times = [ "00:00", "00:24", "00:35" ]

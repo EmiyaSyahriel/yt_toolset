@@ -1,0 +1,17 @@
+F desc.toml :: MirishitaDesc.toml
+D Source
+D Source/Stable
+D Source/Original
+D Project
+F Project/$(ProjectName).kdenlive :: Main.kdenlive
+F Project/$(ProjectName)_Shorts.kdenlive :: Shorts.kdenlive
+F Project/$(ProjectName).ass :: Main.ass
+F Project/$(ProjectName)_Shorts.ass :: Shorts.ass
+D Render
+D Thumb
+
+A Project.RenderDir = Render/
+A Project.ThumbDir = Thumb/
+A Project.SrcDirStable = Source/Stable/
+A Project.SrcDirOriginal = Source/Original/
+A Project.ProjectDir = Project/
