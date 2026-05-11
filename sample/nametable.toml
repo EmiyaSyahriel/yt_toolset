@@ -2,9 +2,9 @@
 
 [cfg.name_default.ja]
 format = "${family} ${given}"
-call_by = "${family}"
+call_by = "${given}"
 use_pronoun = false
-pronoun= "さん"
+pronoun = "さん"
 
 [cfg.name_default.id]
 format = "${family} ${given}"

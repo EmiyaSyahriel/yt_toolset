@@ -4,8 +4,8 @@ family = "天美"
 given = "春香"
 
 [chara.haruka.ww]
-family = "Amami"
 given = "Haruka"
+family = "Amami"
 
 ## Chihaya Kisaragi
 [chara.chihaya.ja]
@@ -13,8 +13,8 @@ family = "如月"
 given = "千早"
 
 [chara.chihaya.ww]
-family = "Kisaragi"
 given = "Chihaya"
+family = "Kisaragi"
 
 ## Yukiho Hagiwara
 [chara.yukiho.ja]
@@ -22,5 +22,95 @@ family = "萩原"
 given = "雪歩"
 
 [chara.yukiho.ww]
-family = "Hagiwara"
 given = "Yukiho"
+family = "Hagiwara"
+
+## Yayoi Takatsuki
+[chara.yayoi.ja]
+family = "高槻"
+given = "やよい"
+
+[chara.yayoi.ww]
+given = "Yayoi"
+family = "Takatsuki"
+
+## Miki Hoshii
+[chara.miki.ja]
+family = "星井"
+given = "美希"
+
+[chara.miki.ww]
+given = "Miki"
+family = "Hoshii"
+
+## Makoto Kikuchi
+[chara.makoto.ja]
+family = "菊地"
+given = "真"
+
+[chara.makoto.ww]
+given = "Makoto"
+family = "Kikuchi"
+
+## Iori Minase
+[chara.iori.ja]
+family = "水瀬"
+given = "伊織"
+
+[chara.iori.ww]
+given = "Iori"
+family = "Minase"
+
+## Takane Shijou
+[chara.takane.ja]
+family = "四条"
+given = "貴音"
+
+[chara.takane.ww]
+given = "Takane"
+family = "Shijou"
+
+## Ritsuko Akizuki
+[chara.ritsuko.ja]
+family = "秋月"
+given = "律子"
+
+[chara.ritsuko.ww]
+given = "Ritsuko"
+family = "Akizuki"
+
+## Azusa Miura
+[chara.azusa.ja]
+family = "三浦"
+given = "あずさ"
+
+[chara.azusa.ww]
+given = "Miura"
+family = "Azusa"
+
+## Ami Futami
+[chara.ami.ja]
+family = "双海"
+given = "亜美"
+
+[chara.ami.ww]
+given = "Ami"
+family = "Futami"
+
+## Mami Futami
+[chara.mami.ja]
+family = "双海"
+given = "真美"
+
+[chara.mami.ww]
+given = "Mami"
+family = "Futami"
+
+## Hibiki Ganaha
+[chara.hibiki.ja]
+family = "我那覇"
+given = "響"
+
+[chara.hibiki.ww]
+given = "Hibiki"
+family = "Ganaha"
