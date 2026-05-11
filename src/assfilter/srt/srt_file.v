@@ -48,7 +48,7 @@ fn parse_srt_time(idx int, src string)! time.Duration {
 		tv.max = 60
 		m := tv.v(fmt_times[1], "minute")! * time.minute
 		s := tv.v(fmt_times[2], "second")! * time.second
-		tv.max = 100
+		tv.max = 1000
 		ms := tv.v(fmt_times[3], "millisecond")! * time.millisecond
 
 		return h + m + s + ms
@@ -58,7 +58,7 @@ fn parse_srt_time(idx int, src string)! time.Duration {
 			tv.max = 60
 			m :=  tv.v(fmt_times[0], "minute")! * time.minute
 			s :=  tv.v(fmt_times[1], "second")! * time.second
-			tv.max = 100
+			tv.max = 1000
 			ms := tv.v(fmt_times[2], "millisecond")! * time.millisecond
 
 			return m + s + ms
@@ -66,7 +66,7 @@ fn parse_srt_time(idx int, src string)! time.Duration {
 			tv.max = 60
 			h := tv.v(fmt_times[0], "hour")! * time.hour
 			m := tv.v(fmt_times[1], "minute")! * time.minute
-			tv.max = 100
+			tv.max = 1000
 			s := tv.v(fmt_times[2], "second")! * time.second
 
 			return h + m + s
@@ -153,7 +153,6 @@ pub fn SrtFile.parse(src string) !SrtFile {
 
 	}
 
-	return SrtFile{
-		lines: content
-	}
+	retval := SrtFile{ lines: content }
+	return retval
 }
