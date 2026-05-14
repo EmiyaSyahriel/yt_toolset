@@ -83,6 +83,7 @@ fn build_main(_ build.Task) ! {
 
 
     execsh("v", getwd(), f_args, {})!
+    return
 }
 
 fn should_rebuild_main(_ build.Task) !bool {
@@ -129,11 +130,26 @@ fn do_check(_ build.Task)! {
     return
 }
 
+fn run_testing(task build.Task)! {
+    full_cfg_path := join_path(getwd(), "sample")
+    full_cwd_path := join_path(getwd(), ".workdir")
+
+    if !exists(full_cwd_path) {
+        mkdir_all(full_cwd_path)!
+    }
+
+    setenv("YTTS_CONFIG_DIR_OVERRIDE", full_cfg_path, true)
+    setenv("YTTS_WORK_DIR_OVERRIDE", full_cwd_path, true)
+    run_main(task)!
+    return
+}
+
 mut ctx := build.context(default: "build")
 
 ctx.task(name: 'build', run: build_main, should_run: should_rebuild_main)
 ctx.task(name: 'run', run: run_main, depends: [ 'build' ])
 ctx.task(name: 'test', run: do_test)
 ctx.task(name: 'check', run: do_check)
+ctx.task(name: 'test_run', run: run_testing, depends: ['build'])
 
 ctx.run()
