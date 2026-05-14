@@ -85,6 +85,10 @@ pub fn DirFile.parse(src string) !DirFile {
 			line.starts_with('A ') {
 				items << AttributeEntry.parse(idx, line)!
 			}
+			line.starts_with("#") || line.starts_with("//") {
+				// comment
+				continue
+			}
 			line.len <= 0 {
 				continue
 			}
