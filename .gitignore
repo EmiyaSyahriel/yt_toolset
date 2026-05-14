@@ -23,6 +23,7 @@ bin/
 *.db
 *.js
 .build/
+.workdir/
 
 # Ignore installed modules through `v install --local`:
 modules/
