@@ -11,6 +11,7 @@ pub mut:
 	template_root_dir string
 	preset_root_dir string
 	dry_run bool
+	dep_check bool
 }
 
 pub fn (this Structurer) name() string {
@@ -99,5 +100,98 @@ pub fn (mut this Structurer) execute(args []string) ! {
 		break
 	}
 
+	if preset_name == "" {
+		return error("preset not found, please specify one in the command line argument")
+	}
 
+	this.dep_check = args.contains("--dep-check") || args.contains("-D")
+
+	dir_file := this.find_preset_with_name(preset_name) or { panic(err) }
+
+	if this.dep_check {
+		this.do_a_dependency_check(dir_file) or { panic(err) }
+	}
+
+	for item in dir_file.items {
+		match item {
+			AttributeEntry {
+				this.create_attribute(item) or { panic(err) }
+			}
+			FileEntry {
+				this.create_file(item) or { panic(err) }
+			}
+			DirectoryEntry {
+				this.create_directory(item) or { panic(err) }
+			}
+			else {
+				return error("unknown item type")
+			}
+		}
+	}
+
+	return
+
+}
+
+fn (this &Structurer) do_a_dependency_check(file DirFile)! {
+
+}
+
+fn (this &Structurer) create_attribute(entry AttributeEntry)! {
+	// TODO:
+}
+
+fn (this &Structurer) create_file(entry FileEntry)! {
+	file_path := os.join_path(this.core.work_dir, entry.path)
+
+	if os.exists(file_path) {
+		println("${file_path} exists, not writing ...")
+		return
+	}
+
+	if !entry.has_template {
+		println("creating ${file_path} ...")
+
+		if this.dry_run { return }
+
+		mut file := os.create(file_path)!
+		defer { file.close() }
+		return
+	}
+
+	template_path := os.join_path(this.template_root_dir, entry.template)
+	if !os.exists(template_path) {
+		return error("requested template not found in path ${template_path}")
+	}
+
+	data := os.read_file(template_path)!
+
+	if formatted := this.try_format_template(data) {
+		println("creating \"${file_path}\" by formatting the template from \"${template_path}\" ...")
+		if this.dry_run { return }
+
+		os.write_file(file_path, formatted)!
+	} else {
+		println("creating \"${file_path}\" by directly copying from \"${template_path}\" ...")
+		if !this.dry_run { return }
+
+		os.write_file(file_path, data)!
+	}
+
+	return
+}
+
+fn (this &Structurer) try_format_template(source string) !string {
+	// TODO: do actual templating
+	return source
+}
+
+fn (this &Structurer) create_directory(entry DirectoryEntry)! {
+	// TODO:
+
+	dir_path := os.join_path(this.core.work_dir, entry.path)
+
+	if os.exists(dir_path) {
+		return
+	}
 }
