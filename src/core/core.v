@@ -1,5 +1,8 @@
 module core
 
+import os
+import utils
+
 @[heap]
 pub struct ISubToolWrap {
 pub mut:
@@ -18,6 +21,8 @@ pub fn ISubToolWrap.wrap(name string, inner &ISubTool) &ISubToolWrap {
 pub struct Core {
 pub mut:
 	subtools []&ISubToolWrap
+	config_root_dir string
+	work_dir string
 }
 
 pub fn Core.new() &Core {
@@ -25,7 +30,33 @@ pub fn Core.new() &Core {
 		subtools: []
 	}
 
+	core.get_dirs()
+
 	return core
+}
+
+pub fn (core Core) mkdir_all_related_directories()! {
+	utils.try_mkdir_all(core.config_root_dir)!
+}
+
+fn (mut core Core) get_config_dir()! {
+	core.config_root_dir = os.getenv_opt("YTTS_CONFIG_DIR_OVERRIDE") or {
+		os.join_path(os.config_dir()!, "emiyasyahriel", "yt_toolset")
+	}
+
+}
+
+fn (mut core Core) get_workdir() {
+	core.work_dir = os.getenv_opt("YTTS_WORK_DIR_OVERRIDE") or {
+		os.getenv_opt("YTTS_WORKDIR_OVERRIDE") or {
+			os.getwd()
+		}
+	}
+}
+
+fn (mut core Core) get_dirs() {
+	core.get_config_dir() or { panic(err) }
+	core.get_workdir()
 }
 
 pub fn (mut this Core) register(ins &ISubTool) {
