@@ -39,7 +39,20 @@ pub fn (this Structurer) get_description() string {
 }
 
 pub fn (this Structurer) get_help_string() string {
-	return ''
+	return 'usage:
+ytts directory [flags..] [preset name]
+
+preset name corresponds to a file with .dir extension in ${this.preset_root_dir},
+lookup is case-insensitive. please refer to the documentation for the .dir file
+specification
+
+flags:
+-d, --dry-run          parse dir file, read files, but do not write file
+-D, --dep-check        do a dependency check, check if required template file exists, etc.
+-l, --list             list all templates
+
+n.b: you cannot merge flag into one like in ls command, all flags have to be separately specified
+'
 }
 
 fn (this& Structurer) get_preset_file_list() []string {
