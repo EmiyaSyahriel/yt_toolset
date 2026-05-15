@@ -145,12 +145,12 @@ fn (this &Structurer) create_file(entry FileEntry)! {
 	file_path := os.join_path(this.core.work_dir, entry.path)
 
 	if os.exists(file_path) {
-		println("${file_path} exists, not writing ...")
+		println("file ${file_path} exists, not writing ...")
 		return
 	}
 
 	if !entry.has_template {
-		println("creating ${file_path} ...")
+		println("creating file ${file_path} ...")
 
 		if this.dry_run { return }
 
@@ -167,12 +167,12 @@ fn (this &Structurer) create_file(entry FileEntry)! {
 	data := os.read_file(template_path)!
 
 	if formatted := this.try_format_template(data) {
-		println("creating \"${file_path}\" by formatting the template from \"${template_path}\" ...")
+		println("creating file \"${file_path}\" by formatting the template from \"${template_path}\" ...")
 		if this.dry_run { return }
 
 		os.write_file(file_path, formatted)!
 	} else {
-		println("creating \"${file_path}\" by directly copying from \"${template_path}\" ...")
+		println("creating file \"${file_path}\" by directly copying from \"${template_path}\" ...")
 		if !this.dry_run { return }
 
 		os.write_file(file_path, data)!
@@ -192,6 +192,12 @@ fn (this &Structurer) create_directory(entry DirectoryEntry)! {
 	dir_path := os.join_path(this.core.work_dir, entry.path)
 
 	if os.exists(dir_path) {
+		println("directory ${dir_path} exists, not creating ...")
 		return
 	}
+
+	if this.dry_run { return }
+	os.mkdir(entry.path)!
+
+	return
 }
