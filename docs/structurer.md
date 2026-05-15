@@ -48,5 +48,6 @@ template file, in which the `$$(key)$$` would be replaced with appropriate value
 - `project.name` - Project name, taken from `ytts.toml#project.name`
 - `project.path` - Project path, full `getwd()`
 - `preset.name` - Requested preset name
+- The rest of `ytts.toml` ...
 
 Otherwise it is copied as-is.
