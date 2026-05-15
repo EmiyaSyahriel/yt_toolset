@@ -107,6 +107,7 @@ pub fn (mut this Structurer) execute(args []string) ! {
 	this.dep_check = args.contains("--dep-check") || args.contains("-D")
 
 	dir_file := this.find_preset_with_name(preset_name) or { panic(err) }
+	this.core.ytts.project.name = preset_name
 
 	if this.dep_check {
 		this.do_a_dependency_check(dir_file) or { panic(err) }
@@ -133,8 +134,27 @@ pub fn (mut this Structurer) execute(args []string) ! {
 
 }
 
-fn (this &Structurer) do_a_dependency_check(file DirFile)! {
+fn (this &Structurer) check_dep_file(ent FileEntry)! {
+	if !ent.has_template { return }
 
+	template_path := os.join_path(this.template_root_dir, ent.template)
+
+	if !os.exists(template_path) {
+		return error("template \"${ent.template}\" not found at \"${template_path}\"")
+	}
+
+	return
+}
+
+fn (this &Structurer) do_a_dependency_check(file DirFile)! {
+	for ent in file.items {
+		match ent {
+			// we only need to check file entry since only file entry that have dependency
+			FileEntry { this.check_dep_file(ent)! }
+			else {}
+		}
+	}
+	return
 }
 
 fn (this &Structurer) create_attribute(entry AttributeEntry)! {
