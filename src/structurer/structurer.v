@@ -186,11 +186,13 @@ fn (this &Structurer) create_file(entry FileEntry)! {
 
 	data := os.read_file(template_path)!
 
-	if formatted := this.try_format_template(data) {
+	is_formatted, formatted_str := this.try_format_template(data)!
+
+	if is_formatted {
 		println("creating file \"${file_path}\" by formatting the template from \"${template_path}\" ...")
 		if this.dry_run { return }
 
-		os.write_file(file_path, formatted)!
+		os.write_file(file_path, formatted_str)!
 	} else {
 		println("creating file \"${file_path}\" by directly copying from \"${template_path}\" ...")
 		if !this.dry_run { return }
@@ -201,9 +203,15 @@ fn (this &Structurer) create_file(entry FileEntry)! {
 	return
 }
 
-fn (this &Structurer) try_format_template(source string) !string {
-	// TODO: do actual templating
-	return source
+fn (this &Structurer) get_templater_value(key string) !string {
+	return match key {
+		"project.name" { this.core.ytts.project.name }
+		"project.path" { os.getwd() }
+		"preset.name" { this.core.ytts.project.template }
+		else {
+			this.core.get_prop_value(key)!
+		}
+	}
 }
 
 fn (this &Structurer) create_directory(entry DirectoryEntry)! {

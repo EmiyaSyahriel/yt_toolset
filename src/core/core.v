@@ -63,6 +63,40 @@ fn (mut core Core) get_workdir() {
 	}
 }
 
+pub fn (core &Core) get_prop_value(key string) !string {
+	project_prefix := "project."
+	if key.starts_with (project_prefix) {
+		true_key := key[project_prefix.len..]
+		$for field in YttsFileProject.fields {
+			if field.name == true_key {
+				$if field.typ is string {
+					return core.ytts.project.$(field.name)
+				} $else {
+					return core.ytts.project.$(field.name).str()
+				}
+			}
+		}
+	}
+
+	return error("unknown key ${key}")
+}
+
+pub fn (core &Core) set_prop_value(key string, value string)! {
+	project_prefix := "project."
+	if key.starts_with (project_prefix) {
+		true_key := key[project_prefix.len..]
+		$for field in YttsFileProject.fields {
+			if field.name == true_key {
+				$if field.typ is string {
+					core.ytts.project.$(field.name) = value
+				}
+			}
+		}
+	}
+
+	return error("failed to assign ${key}, it might not exists or might not a string member")
+}
+
 fn (mut core Core) get_dirs() {
 	core.get_config_dir() or { panic(err) }
 	core.get_workdir()
