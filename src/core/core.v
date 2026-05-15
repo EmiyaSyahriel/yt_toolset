@@ -2,6 +2,8 @@ module core
 
 import os
 import utils
+import toml
+import time
 
 @[heap]
 pub struct ISubToolWrap {
@@ -23,6 +25,7 @@ pub mut:
 	subtools []&ISubToolWrap
 	config_root_dir string
 	work_dir string
+	ytts YttsFile
 }
 
 pub fn Core.new() &Core {
@@ -37,6 +40,12 @@ pub fn Core.new() &Core {
 
 pub fn (core Core) mkdir_all_related_directories()! {
 	utils.try_mkdir_all(core.config_root_dir)!
+}
+
+pub fn (mut core Core) initialize_ytts() {
+	core.ytts.project.created_at = toml.DateTime { datetime: time.now().format_rfc3339() }
+	_, name, _ := os.split_path(os.abs_path(core.work_dir))
+	core.ytts.project.name = name
 }
 
 fn (mut core Core) get_config_dir()! {
