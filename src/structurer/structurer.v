@@ -113,16 +113,23 @@ pub fn (mut this Structurer) execute(args []string) ! {
 		this.do_a_dependency_check(dir_file) or { panic(err) }
 	}
 
+	// handle attributes first
+	for item in dir_file.items {
+		if item is AttributeEntry {
+			this.create_attribute(item) or { panic(err) }
+		}
+	}
+
 	for item in dir_file.items {
 		match item {
-			AttributeEntry {
-				this.create_attribute(item) or { panic(err) }
-			}
 			FileEntry {
 				this.create_file(item) or { panic(err) }
 			}
 			DirectoryEntry {
 				this.create_directory(item) or { panic(err) }
+			}
+			AttributeEntry{
+				// handled previously, skip now
 			}
 			else {
 				return error("unknown item type")
