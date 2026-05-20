@@ -4,7 +4,7 @@ import time
 
 fn prepare_your_ass() AssFile {
 	info := ScriptInfo{
-		title:                    'Genshin Impact'
+		title:                    'Apple Jahat'
 		script_type:              'v4.00+'
 		wrap_style:               '0'
 		scaled_border_and_shadow: 'yes'
@@ -96,7 +96,7 @@ tsukarete dake yo'
 	return retval
 }
 
-fn test_ass_file_tostring() {
+fn test_ass_file_tostring_print() {
 	ass_file := prepare_your_ass()
 	println(ass_file.str())
 }
