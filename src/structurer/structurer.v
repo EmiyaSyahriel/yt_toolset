@@ -166,6 +166,7 @@ fn (this &Structurer) do_a_dependency_check(file DirFile)! {
 
 fn (this &Structurer) create_attribute(entry AttributeEntry)! {
 	// TODO:
+	this.core.set_prop_value(entry.key, entry.value)!
 }
 
 fn (this &Structurer) create_file(entry FileEntry)! {

@@ -89,6 +89,7 @@ pub fn (core &Core) set_prop_value(key string, value string)! {
 			if field.name == true_key {
 				$if field.typ is string {
 					core.ytts.project.$(field.name) = value
+					return
 				}
 			}
 		}

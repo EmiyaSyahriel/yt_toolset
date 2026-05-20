@@ -81,27 +81,34 @@ pub enum EncodingCode {
 
 pub struct Style {
 pub mut:
-	name            string
-	font_name       string
-	font_size       u32
-	primary_color   Color
-	secondary_color Color
-	outline_color   Color
-	back_color      Color
-	bold            bool
-	italic          bool
-	underline       bool
-	strike_out      bool
-	scale_x         f32
-	scale_y         f32
-	spacing         u32
-	angle           f32
-	border_style    BorderStyle
-	outline         u32
-	shadow          u32
-	alignment       AlignmentStyle
-	margin_l        u32
-	margin_r        u32
-	margin_v        u32
-	encoding        EncodingCode
+	name string = 'Default' @[ass_style: Name]
+
+	font_name string = 'Roboto' @[ass_style: Fontname]
+	font_size u32    = 20    @[ass_style: Fontsize]
+
+	primary_color   Color = Color.rgba(255, 255, 255, 255) @[ass_style: PrimaryColour]
+	secondary_color Color = Color.rgba(0, 255, 0, 255) @[ass_style: SecondaryColour]
+	outline_color   Color = Color.rgba(0, 0, 0, 255) @[ass_style: OutlineColour]
+	back_color      Color = Color.rgba(0, 0, 0, 255) @[ass_style: BackColour]
+
+	bold       bool @[ass_boolean_int; ass_style: Bold]
+	italic     bool @[ass_boolean_int; ass_style: Italic]
+	underline  bool @[ass_boolean_int; ass_style: Underline]
+	strike_out bool @[ass_boolean_int; ass_style: Strikeout]
+
+	scale_x f32 = 100.0 @[ass_style: ScaleX]
+	scale_y f32 = 100.0 @[ass_style: ScaleY]
+	spacing u32 @[ass_style: Spacing]
+	angle   f32 = 0.0 @[ass_style: Angle]
+
+	border_style BorderStyle = .outline @[ass_enum_int: BorderStyle; ass_style: BorderStyle]
+	outline      u32         = 1         @[ass_style: Outline]
+	shadow       u32         = 2         @[ass_style: Shadow]
+
+	alignment AlignmentStyle = .bottom_center @[ass_enum_int: AlignmentStyle; ass_style: Alignment]
+	margin_l  u32            = 10            @[ass_style: MarginL]
+	margin_r  u32            = 10            @[ass_style: MarginR]
+	margin_v  u32            = 10            @[ass_style: MarginV]
+
+	encoding EncodingCode = .default @[ass_enum_int: EncodingCode; ass_style: Encoding]
 }

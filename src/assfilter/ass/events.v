@@ -3,27 +3,45 @@ module ass
 import time
 
 pub enum EventKind {
-	dialogue
-	comment
-	picture
-	sound
-	movie
-	command
+	none      @[display_name: "None"]
+	dialogue  @[display_name: "Dialogue"]
+	comment   @[display_name: "Comment"]
+	// Anything beyond this is rarely supported
+	picture  @[display_name: "Picture"]
+	sound    @[display_name: "Sound"]
+	movie    @[display_name: "Movie"]
+	command  @[display_name: "Command"]
+}
+
+pub fn (kind EventKind) str() string {
+	display_name_prefix := "display_name:"
+
+	$for item in EventKind.values {
+		if item.value == kind {
+			for attr in item.attrs {
+				if attr.starts_with(display_name_prefix) {
+					value := attr[display_name_prefix.len..]
+					return value.trim_space()
+				}
+			}
+		}
+	}
+	return "None"
 }
 
 pub struct Event {
 pub mut:
 	kind       EventKind
-	layer      int
-	start_time time.Duration = 0 * time.millisecond
-	end_time   time.Duration = 1 * time.millisecond
-	style      string        = 'Default'
-	actor_name string
-	margin_l   int
-	margin_r   int
-	margin_v   int
-	effect     string
-	text       string
+	layer      int           @[ass_event: Layer]
+	start_time time.Duration = 0 * time.millisecond @[ass_event: Start; ass_time]
+	end_time   time.Duration = 1 * time.millisecond @[ass_event: End; ass_time]
+	style      string        = 'Default'        @[ass_event: Style]
+	actor_name string        @[ass_event: Name]
+	margin_l   int           @[ass_event: MarginL]
+	margin_r   int           @[ass_event: MarginR]
+	margin_v   int           @[ass_event: MarginV]
+	effect     string        @[ass_event: Effect]
+	text       string        @[ass_event: Text]
 }
 
 pub fn (this &Event) is_valid() bool {

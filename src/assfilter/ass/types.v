@@ -83,7 +83,7 @@ fn u8x(src u8) string {
 		if f >= 0x0 && f <= 0x9 {
 			k << `0` + rune(f)
 		} else if f >= 0xA && f <= 0xF {
-			k << `A` + rune(f)
+			k << `A` + rune(f - 0xA)
 		}
 	}
 	return k.string()
