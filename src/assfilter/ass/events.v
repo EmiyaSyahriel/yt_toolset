@@ -14,34 +14,34 @@ pub enum EventKind {
 }
 
 pub fn (kind EventKind) str() string {
-	display_name_prefix := "display_name:"
+	display_name_prefix := 'display_name:'
 
 	$for item in EventKind.values {
 		if item.value == kind {
 			for attr in item.attrs {
 				if attr.starts_with(display_name_prefix) {
 					value := attr[display_name_prefix.len..]
-					return value.trim_space()
+					return value.trim_space().trim('"')
 				}
 			}
 		}
 	}
-	return "None"
+	return 'None'
 }
 
 pub struct Event {
 pub mut:
 	kind       EventKind
-	layer      int           @[ass_event: Layer]
-	start_time time.Duration = 0 * time.millisecond @[ass_event: Start; ass_time]
-	end_time   time.Duration = 1 * time.millisecond @[ass_event: End; ass_time]
-	style      string        = 'Default'        @[ass_event: Style]
-	actor_name string        @[ass_event: Name]
-	margin_l   int           @[ass_event: MarginL]
-	margin_r   int           @[ass_event: MarginR]
-	margin_v   int           @[ass_event: MarginV]
-	effect     string        @[ass_event: Effect]
-	text       string        @[ass_event: Text]
+	layer      int           @[ass_event: "Layer"]
+	start_time time.Duration = 0 * time.millisecond @[ass_event: "Start"; ass_time]
+	end_time   time.Duration = 1 * time.millisecond @[ass_event: "End"; ass_time]
+	style      string        = 'Default'        @[ass_event: "Style"]
+	actor_name string        @[ass_event: "Name"]
+	margin_l   int           @[ass_event: "MarginL"]
+	margin_r   int           @[ass_event: "MarginR"]
+	margin_v   int           @[ass_event: "MarginV"]
+	effect     string        @[ass_event: "Effect"]
+	text       string        @[ass_event: "Text"]
 }
 
 pub fn (this &Event) is_valid() bool {
