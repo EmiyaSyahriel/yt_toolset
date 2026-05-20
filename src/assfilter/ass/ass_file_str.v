@@ -11,12 +11,18 @@ fn (this &AssFile) str_script_info(mut line strings.Builder, mut bld strings.Bui
 		for attr in field.attrs {
 			if attr.starts_with('ass_attr:') {
 				mut attr_value := ''
+
 				$if field.typ is string {
 					attr_value = this.script_info.$(field.name)
 				} $else {
 					attr_value = this.script_info.$(field.name).str()
 				}
 				attr_key := attr['ass_attr:'.len..].trim_space().trim('"')
+
+				if field.attrs.contains("ass_optional") && attr_value.len == 0 {
+					continue
+				}
+
 				bld.write_string2('${attr_key}: ${attr_value}', '\n')
 			}
 		}
@@ -25,6 +31,7 @@ fn (this &AssFile) str_script_info(mut line strings.Builder, mut bld strings.Bui
 }
 
 fn (this &AssFile) str_custom_section(mut line strings.Builder, mut bld strings.Builder) {
+	_ = line
 	for section_name, section_data in this.custom_sections {
 		bld.write_string2('[${section_name}]', '\n')
 
