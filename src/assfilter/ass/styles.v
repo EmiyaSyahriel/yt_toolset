@@ -101,14 +101,14 @@ pub mut:
 	spacing u32 @[ass_style: Spacing]
 	angle   f32 = 0.0 @[ass_style: Angle]
 
-	border_style BorderStyle = .outline @[ass_enum_int: BorderStyle; ass_style: BorderStyle]
+	border_style BorderStyle = .outline @[ass_enum_int; ass_style: BorderStyle]
 	outline      u32         = 1         @[ass_style: Outline]
 	shadow       u32         = 2         @[ass_style: Shadow]
 
-	alignment AlignmentStyle = .bottom_center @[ass_enum_int: AlignmentStyle; ass_style: Alignment]
+	alignment AlignmentStyle = .bottom_center @[ass_enum_int; ass_style: Alignment]
 	margin_l  u32            = 10            @[ass_style: MarginL]
 	margin_r  u32            = 10            @[ass_style: MarginR]
 	margin_v  u32            = 10            @[ass_style: MarginV]
 
-	encoding EncodingCode = .default @[ass_enum_int: EncodingCode; ass_style: Encoding]
+	encoding EncodingCode = .default @[ass_enum_int; ass_style: Encoding]
 }

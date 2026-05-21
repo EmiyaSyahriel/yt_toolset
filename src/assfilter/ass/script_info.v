@@ -10,7 +10,7 @@ pub mut:
 	original_editing     string @[ass_attr: "Original Editing"; ass_optional]
 	original_translation string @[ass_attr: "Original Translation"; ass_optional]
 	original_timing      string @[ass_attr: "Original Timing"; ass_optional]
-	synch_point          string @[ass_attr: "Synch Ppint"; ass_optional]
+	synch_point          string @[ass_attr: "Synch Point"; ass_optional]
 	script_updated_by    string @[ass_attr: "Script Updated By"; ass_optional]
 	update_details       string @[ass_attr: "Update Details"; ass_optional]
 

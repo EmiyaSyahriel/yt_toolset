@@ -9,7 +9,7 @@ fn (this &AssFile) str_script_info(mut line strings.Builder, mut bld strings.Bui
 
 	$for field in ScriptInfo.fields {
 		for attr in field.attrs {
-			if attr.starts_with('ass_attr:') {
+			if attr.starts_with(ass_attr_prefix) {
 				mut attr_value := ''
 
 				$if field.typ is string {
@@ -17,9 +17,9 @@ fn (this &AssFile) str_script_info(mut line strings.Builder, mut bld strings.Bui
 				} $else {
 					attr_value = this.script_info.$(field.name).str()
 				}
-				attr_key := attr['ass_attr:'.len..].trim_space().trim('"')
+				attr_key := attr[ass_attr_prefix.len..].trim_space().trim('"')
 
-				if field.attrs.contains("ass_optional") && attr_value.len == 0 {
+				if field.attrs.contains(ass_optional_flag) && attr_value.len == 0 {
 					continue
 				}
 
@@ -27,6 +27,11 @@ fn (this &AssFile) str_script_info(mut line strings.Builder, mut bld strings.Bui
 			}
 		}
 	}
+
+	for k, v in this.script_info.custom_data {
+		bld.write_string2("${k}: ${v}", "\n")
+	}
+
 	bld.write_string('\n')
 }
 
@@ -41,9 +46,6 @@ fn (this &AssFile) str_custom_section(mut line strings.Builder, mut bld strings.
 	}
 	bld.write_string('\n')
 }
-
-const ass_style_prefix = 'ass_style:'
-const ass_event_prefix = 'ass_event:'
 
 fn (this &AssFile) str_style(mut line strings.Builder, mut bld strings.Builder) {
 	bld.write_string2('[V4+ Styles]', '\n')
@@ -72,21 +74,13 @@ fn (this &AssFile) str_style(mut line strings.Builder, mut bld strings.Builder) 
 				if attr.starts_with(ass_style_prefix) {
 					mut value := 'invalid'
 
-					mut has_enum_int := false
-					for f in field.attrs {
-						if f.starts_with('ass_enum_int') {
-							has_enum_int = true
-							break
-						}
-					}
-
 					match true {
 						field.attrs.contains('ass_boolean_int') {
 							$if field.typ is bool {
 								value = (if style.$(field.name) { -1 } else { 0 }).str()
 							}
 						}
-						has_enum_int {
+						field.attrs.contains('ass_enum_int') {
 							$if field.is_enum {
 								value = unsafe { int(style.$(field.name)) }.str()
 							}
