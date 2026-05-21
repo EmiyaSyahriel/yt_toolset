@@ -83,7 +83,7 @@ tsukarete dake yo'
 		end_time:   67321 * time.millisecond
 		kind:       .comment
 		effect:		'template syl'
-		text:       '{\\move(\${x-100}, \$y, \$x, \$y, 0, 500)\\fade(0, 500, 0, 1)}'
+		text:       '{\\move(|\$x-100|, \$y, \$x, \$y, 0, 500)\\fade(0, 500, 0, 1)}'
 	}
 
 	retval := AssFile{
