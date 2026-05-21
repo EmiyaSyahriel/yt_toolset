@@ -3,7 +3,7 @@ module ass
 import time
 
 pub enum EventKind {
-	none      @[display_name: "None"]
+	none
 	dialogue  @[display_name: "Dialogue"]
 	comment   @[display_name: "Comment"]
 	// Anything beyond this is rarely supported
@@ -13,16 +13,37 @@ pub enum EventKind {
 	command  @[display_name: "Command"]
 }
 
+const ass_style_display_name_prefix = "display_name:"
+
+pub fn EventKind.from_string(source string) EventKind {
+	$for val in EventKind.values {
+		for attr in val.attrs {
+			if !attr.starts_with(ass_style_display_name_prefix) {
+				continue
+			}
+
+			key := attr[ass_style_display_name_prefix.len..].trim_space().trim('"')
+			if key != source {
+				continue
+			}
+
+			return EventKind(val.value)
+		}
+	}
+	return EventKind.none
+}
+
 pub fn (kind EventKind) str() string {
-	display_name_prefix := 'display_name:'
 
 	$for item in EventKind.values {
 		if item.value == kind {
 			for attr in item.attrs {
-				if attr.starts_with(display_name_prefix) {
-					value := attr[display_name_prefix.len..]
-					return value.trim_space().trim('"')
+				if !attr.starts_with(ass_style_display_name_prefix) {
+					continue
 				}
+
+				value := attr[ass_style_display_name_prefix.len..]
+				return value.trim_space().trim('"')
 			}
 		}
 	}
